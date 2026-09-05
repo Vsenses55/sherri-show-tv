@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router";
-import DesignSystem from "./DesignSystem";
 import MyPage from "./MyPage";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <MyPage />,
+    },
+  ],
   {
-    path: "/",
-    element: <MyPage />,
+    basename: import.meta.env.BASE_URL,
   },
-  {
-    path: "/design-system",
-    element: <DesignSystem />,
-  },
-]);
+);
