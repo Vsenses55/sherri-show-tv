@@ -1,5 +1,5 @@
 
-  # Sherri Design System
+  # Sherri Show TV Prototpe
 
   This is a code bundle for Sherri Design System. The original project is available at https://www.figma.com/design/T4TikOoOrKbRfQ02j5em07/Sherri-Design-System.
 
