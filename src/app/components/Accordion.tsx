@@ -9,16 +9,28 @@ interface AccordionItemProps {
 }
 
 function AccordionItem({ title, content, isOpen, onToggle }: AccordionItemProps) {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    onToggle();
+    // Remove focus when closing the accordion
+    if (isOpen) {
+      e.currentTarget.blur();
+    }
+  };
+
   return (
     <div className="border border-slate-200 bg-slate-50">
       <button
-        onClick={onToggle}
-        className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#fe3b84] focus:ring-inset"
+        onClick={handleClick}
+        className={`w-full px-6 py-5 flex items-center justify-between text-left transition-colors focus:outline-none focus:ring-2 focus:ring-[#032a36] focus:ring-inset ${
+          isOpen 
+            ? "bg-[#032a36]" 
+            : "hover:bg-[#e4fafc]"
+        }`}
       >
-        <span className="text-lg font-semibold text-slate-900">{title}</span>
+        <span className={`text-lg font-semibold ${isOpen ? "text-white" : "text-slate-900"}`}>{title}</span>
         <ChevronDown
-          className={`w-5 h-5 text-slate-600 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
+          className={`w-5 h-5 transition-transform duration-200 ${
+            isOpen ? "rotate-180 text-white" : "text-slate-600"
           }`}
         />
       </button>
@@ -27,7 +39,7 @@ function AccordionItem({ title, content, isOpen, onToggle }: AccordionItemProps)
           isOpen ? "max-h-96" : "max-h-0"
         }`}
       >
-        <div className="px-6 py-4 text-slate-600 leading-relaxed border-t border-slate-200">
+        <div className="px-6 py-4 text-slate-600 leading-relaxed">
           {content}
         </div>
       </div>
@@ -40,7 +52,7 @@ interface AccordionProps {
   allowMultiple?: boolean;
 }
 
-export function Accordion({ items, allowMultiple = false }: AccordionProps) {
+export function Accordion({ items = [], allowMultiple = false }: AccordionProps) {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
 
   const handleToggle = (index: number) => {

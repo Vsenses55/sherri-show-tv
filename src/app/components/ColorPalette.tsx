@@ -26,7 +26,7 @@ function getContrastRating(hex: string): string {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  
+
   if (luminance > 0.7 || luminance < 0.3) return "AAA";
   if (luminance > 0.5 || luminance < 0.4) return "AA";
   return "AA";
@@ -42,15 +42,21 @@ export function ColorPalette({ scaleName, shades, onColorClick }: ColorPalettePr
     onColorClick(shade, color);
   };
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-baseline gap-3">
-        <h2 className="text-xl font-bold text-slate-900 capitalize">{scaleName}</h2>
-        <span className="text-slate-400 text-sm">{Object.keys(shades).length} shades</span>
-      </div>
+  // Filter to only show 100, 300, 500, 700, 900
+  const filteredShades = Object.entries(shades).filter(([shade]) =>
+    ["100", "300", "500", "700", "900"].includes(shade)
+  );
 
-      <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-3">
-        {Object.entries(shades).map(([shade, color]) => {
+  return (
+    <div className="flex flex-col gap-[24px]">
+      {/* Heading */}
+      <h2 className="font-['Inter'] font-bold text-[20px] leading-[28px] tracking-[-0.4492px] text-[#0f172b] capitalize">
+        {scaleName}
+      </h2>
+
+      {/* Color Grid - 2x2 on mobile, 5 across on desktop */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-[24px]">
+        {filteredShades.map(([shade, color]) => {
           const textColor = getContrastColor(color.hex);
           const contrastRating = getContrastRating(color.hex);
           const isCopied = copiedColor === `${scaleName}/${shade}`;
@@ -59,38 +65,35 @@ export function ColorPalette({ scaleName, shades, onColorClick }: ColorPalettePr
             <button
               key={shade}
               onClick={() => handleClick(shade, color)}
-              className="group relative text-left transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#fe3b84] focus:ring-offset-2 rounded-lg"
+              className="relative rounded-[10px] border border-[#e2e8f0] p-[17px] flex flex-col gap-[12px] transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#fe3b84] focus:ring-offset-2"
             >
-              {/* Color Preview */}
+              {/* Color Preview with WCAG Rating */}
               <div
-                className="w-full h-24 rounded-lg mb-2 flex items-center justify-center relative overflow-hidden"
+                className="w-full rounded-[8px] border border-[#e2e8f0] flex items-center justify-center px-[72px] py-[41px] relative"
                 style={{ backgroundColor: color.hex }}
               >
                 <span
-                  className="text-2xl font-bold z-10 relative"
+                  className="font-['Montserrat'] font-bold text-[20px] leading-[24px] text-center"
                   style={{ color: textColor }}
                 >
                   {contrastRating}
                 </span>
-                
+
                 {/* Copied indicator */}
                 {isCopied && (
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center rounded-[8px]">
                     <span className="text-white text-xs font-semibold">Copied!</span>
                   </div>
                 )}
               </div>
 
               {/* Color Info */}
-              <div className="space-y-0.5">
-                <p className="text-sm font-semibold text-slate-900 capitalize">
-                  {scaleName}/{shade}
+              <div className="flex flex-col gap-[4px] text-left">
+                <p className="font-['Inter'] font-semibold text-[14px] leading-[20px] text-[#0f172b] capitalize text-left">
+                  {scaleName} {shade}
                 </p>
-                <code className="block text-xs font-mono text-slate-600">
+                <code className="font-['Menlo'] text-[12px] leading-[16px] text-[#45556c] text-left">
                   {color.hex}
-                </code>
-                <code className="block text-xs font-mono text-slate-400">
-                  {color.hsl}
                 </code>
               </div>
             </button>

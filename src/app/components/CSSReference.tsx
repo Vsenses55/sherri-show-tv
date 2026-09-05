@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { colorSystem } from "@/app/App";
+import { colorSystem } from "@/app/DesignSystem";
 
 export function CSSReference() {
   const [copied, setCopied] = useState(false);
@@ -16,33 +16,39 @@ export function CSSReference() {
       css += `\n`;
     });
 
-    css += `  /* Typography */\n`;
-    css += `  --font-size-xs: 0.75rem;      /* 12px */\n`;
-    css += `  --font-size-sm: 0.875rem;     /* 14px */\n`;
-    css += `  --font-size-base: 1rem;       /* 16px */\n`;
-    css += `  --font-size-lg: 1.125rem;     /* 18px */\n`;
-    css += `  --font-size-xl: 1.25rem;      /* 20px */\n`;
-    css += `  --font-size-2xl: 1.5rem;      /* 24px */\n`;
-    css += `  --font-size-3xl: 1.875rem;    /* 30px */\n`;
-    css += `  --font-size-4xl: 2.25rem;     /* 36px */\n`;
-    css += `  --font-size-5xl: 3rem;        /* 48px */\n`;
-    css += `  --font-size-6xl: 3.75rem;     /* 60px */\n`;
+    css += `  /* Typography - Font Sizes */\n`;
+    css += `  --font-size-xx-large: 72px;\n`;
+    css += `  --font-size-x-large: 48px;\n`;
+    css += `  --font-size-large: 32px;\n`;
+    css += `  --font-size-medium: 24px;\n`;
+    css += `  --font-size-small: 20px;\n`;
+    css += `  --font-size-x-small: 16px;\n`;
+    css += `  --font-size-xx-small: 14px;\n`;
+    css += `  --font-size-xxx-small: 12px;\n`;
+    css += `  --paragraph-font-size-large: 18px;\n`;
+    css += `  --paragraph-font-size-regular: 16px;\n`;
+    css += `  --paragraph-font-size-small: 14px;\n`;
+    css += `  --paragraph-font-size-label: 10px;\n`;
     css += `\n`;
 
-    css += `  /* Font Weights */\n`;
-    css += `  --font-weight-normal: 400;\n`;
-    css += `  --font-weight-medium: 500;\n`;
+    css += `  /* Typography - Font Weights */\n`;
+    css += `  --font-weight-regular: 400;\n`;
     css += `  --font-weight-semibold: 600;\n`;
     css += `  --font-weight-bold: 700;\n`;
     css += `  --font-weight-black: 900;\n`;
     css += `\n`;
 
-    css += `  /* Line Heights */\n`;
-    css += `  --line-height-none: 1;\n`;
-    css += `  --line-height-tight: 1.25;\n`;
-    css += `  --line-height-snug: 1.375;\n`;
-    css += `  --line-height-normal: 1.5;\n`;
-    css += `  --line-height-relaxed: 1.625;\n`;
+    css += `  /* Typography - Line Heights */\n`;
+    css += `  --line-height-xx-large: 72px;\n`;
+    css += `  --line-height-x-large: 48px;\n`;
+    css += `  --line-height-large: 32px;\n`;
+    css += `  --line-height-medium: 24px;\n`;
+    css += `  --line-height-small: 20px;\n`;
+    css += `  --line-height-400: 24px;\n`;
+    css += `  --line-height-300: 18px;\n`;
+    css += `  --line-height-200: 12px;\n`;
+    css += `  --line-height-14: 14px;\n`;
+    css += `  --line-height-20: 20px;\n`;
     css += `\n`;
 
     css += `  /* Spacing */\n`;
@@ -108,8 +114,8 @@ export function CSSReference() {
           <div className="text-sm text-slate-600">Color Variables</div>
         </div>
         <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
-          <div className="text-2xl font-bold text-[#43bbcf]">10</div>
-          <div className="text-sm text-slate-600">Font Sizes</div>
+          <div className="text-2xl font-bold text-[#43bbcf]">26</div>
+          <div className="text-sm text-slate-600">Typography Variables</div>
         </div>
         <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
           <div className="text-2xl font-bold text-[#ffd755]">17</div>
@@ -169,17 +175,7 @@ export function CSSReference() {
           <div className="border border-slate-200 rounded-lg p-4">
             <h4 className="text-sm font-semibold text-slate-700 mb-2">Using Typography</h4>
             <pre className="bg-slate-900 text-slate-100 p-4 rounded text-xs sm:text-sm overflow-x-auto">
-              <code>{`.heading-1 {
-  font-size: var(--font-size-5xl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
-}
-
-.body-text {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-relaxed);
-}`}</code>
+              <code>{`.heading-display {\n  font-size: var(--font-size-xx-large);\n  font-weight: var(--font-weight-black);\n  line-height: var(--line-height-xx-large);\n}\n\n.heading-1 {\n  font-size: var(--font-size-x-large);\n  font-weight: var(--font-weight-black);\n  line-height: var(--line-height-x-large);\n}\n\n.body-large {\n  font-size: var(--paragraph-font-size-large);\n  font-weight: var(--font-weight-regular);\n  line-height: var(--line-height-400);\n}`}</code>
             </pre>
           </div>
 

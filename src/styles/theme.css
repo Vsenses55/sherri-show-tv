@@ -188,4 +188,28 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
   }
+
+  /* Custom yellow scrollbar for video player */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #ffd755 #032a36;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #032a36;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #ffd755;
+    border-radius: 0;
+    min-height: 160px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #ffdd66;
+  }
 }
