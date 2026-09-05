@@ -1,10 +1,6 @@
 # Sherri Show TV
 
-<<<<<<< HEAD
 The website for Sherri Show TV. Originally prototyped in Figma Make from the [Sherri Design System](https://www.figma.com/design/T4TikOoOrKbRfQ02j5em07/Sherri-Design-System) Figma file, and now developed and maintained here.
-=======
-  # Sherri Show TV Prototpe
->>>>>>> 004fa3eafa19a240c1c54af650a18eac06e3c914
 
 **Live site:** https://vsenses55.github.io/sherri-show-tv/
 
@@ -12,7 +8,6 @@ The website for Sherri Show TV. Originally prototyped in Figma Make from the [Sh
 
 It's a React + Vite + TypeScript app styled with Tailwind and shadcn/ui.
 
-<<<<<<< HEAD
 ## Getting started
 
 ```bash
@@ -44,7 +39,3 @@ Pushing to `main` triggers a GitHub Actions workflow (`.github/workflows/deploy.
 ## Attributions
 
 This project includes components from [shadcn/ui](https://ui.shadcn.com/) (MIT license) and photos from [Unsplash](https://unsplash.com) (Unsplash license).
-=======
-  Run `npm run dev` to start the development server.
-  
->>>>>>> 004fa3eafa19a240c1c54af650a18eac06e3c914
